@@ -1,0 +1,9 @@
+#!/bin/bash
+mkdir -p ./friendly_keys
+while read name email; do
+  [[ "$name" =~ ^#.*$ ]] && continue
+  [ -z "$name" ] && continue
+  echo "Создаю: $name <$email>"
+  gpg --homedir ./friendly_keys -a --export $email > "${name}.asc"
+done < $1
+gpg --homedir ./friendly_keys -a --export $email > "${name}.asc"

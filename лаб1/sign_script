@@ -1,0 +1,8 @@
+#!/bin/bash
+while read name email; do
+  [[ "$name" =~ ^#.*$ ]] && continue
+  [ -z "$name" ] && continue
+  echo "Подписываю ключ elena.kirillova.05@inbox.ru ключом: $name <$email>"
+  gpg --homedir ./friendly_keys --batch --yes --local-user "$email" --sign-key "elena.kirillova.05@inbox.ru"
+done < $1
+gpg --homedir ./friendly_keys --batch --yes --local-user "$email" --sign-key "elena.kirillova.05@inbox.ru"

@@ -1,0 +1,11 @@
+#!/bin/bash
+mkdir -p ./friendly_keys
+while read name email; do
+  [[ "$name" =~ ^#.*$ ]] && continue
+  [ -z "$name" ] && continue
+  echo "Создаю: $name <$email>"
+  gpg --homedir ./friendly_keys --batch --passphrase '' \
+      --quick-generate-key "$name <$email>" default default never
+done < $1
+gpg --homedir ./friendly_keys --batch --passphrase '' \
+      --quick-generate-key "$name <$email>" default default never

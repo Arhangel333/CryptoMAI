@@ -1,0 +1,13 @@
+gpg --homedir ./friendly_keys --batch --passphrase '' \
+      --quick-generate-key "$name <$email>" default default never
+      
+gpg --homedir ./friendly_keys --list-sigs "mee"
+
+gpg --homedir ./friendly_keys --default-key "cat2008@gmail.com" --sign-key "mysoup@mail.ru"
+
+gpg --homedir ./friendly_keys --list-keys
+
+gpg --homedir ./friendly_keys --batch --yes --default-key "mashunya@yandex.ru" --sign-key "mysoup@mail.ru"
+
+
+gpg --import my_key_with_10_signatures.asc
